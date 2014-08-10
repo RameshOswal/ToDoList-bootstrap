@@ -4,11 +4,18 @@
 		
 		<script src="js/bootstrap.js"></script>
 		<link href="css/bootstrap.css"  type="text/css" rel="stylesheet" >
+		<script src="js/angular.min.js" > </script>
+		<script src = "js/myapp.js" > </script>
 	</head>
 	<body>
 	
 	<div ng-app="myapp">
 		<div ng-controller="mycontroller">
+			<!-- <ul class="dropdown-menu" role="menu"> 
+				<li role="presentation">
+					<a role="menuitem" tabindex="-1">hello</a>
+				</li>
+			</ul> -->
 			<div > TO DO LIST</div>
 			<div>Enter ur Task here</div>
 			<input type="text" ng-model="myData.myText" > </input>
@@ -17,14 +24,23 @@
 							<span class="glyphicon glyphicon-plus"></span> ADD TASK
 			</button>
 			<span ng-bind="myData.myText"> {{myData.myText}}</span>
+			
 			<div ng-repeat="task in myTask"> <!--ng-bind="task.x"-->
 					<!-- need to find another way to do this line -->
 					<del ng-if="task.done" > {{task.taskno}}   {{ task.todo}} </del>
 					<span ng-if="!task.done"> {{task.taskno}}   {{ task.todo}} </span>
+					
 					<span class="bt-group btn-group-sm">
-						<button type="button" class="btn btn-default btn-lg" ng-click="editTask(task.taskno)">
-							<span class="glyphicon glyphicon-pencil"></span> edit
-						</button>
+						<span class="bt-group btn-group-sm">
+							<button type="button" class="btn  btn-default dropdown-toggle btn-lg " data-toggle="dropdown">
+							<!-- ng-click="editTask(task.taskno)"> -->
+								<span class="glyphicon glyphicon-pencil"></span> edit <span class="caret" > </span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a>sddsad</a></li>
+								<li>dasads</li>
+							</ul>
+						</span>	
 						<button type="button" class="btn btn-default btn-lg" ng-if="!task.done" ng-click="toggle(task.taskno)">
 							<span class="glyphicon glyphicon-ok"></span> Done
 						</button>
@@ -71,8 +87,7 @@
 	
 
 	</body>
-		<script src="js/angular.min.js" > </script>
-		<script src = "js/myapp.js" > </script>
+		
 	<script>
 		
 			
